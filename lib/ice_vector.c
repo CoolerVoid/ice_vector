@@ -65,6 +65,7 @@ void ice_vector_remove(ice_vector *v, int index)
     	v->elements[index] = NULL;
 
 
+	i = index;
     	while (i < v->max - 1) 
 	{
         	v->elements[i] = v->elements[i + 1];
