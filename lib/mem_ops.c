@@ -34,17 +34,6 @@ void *ice_xreallocarray (void *ptr, size_t nmemb, size_t size)
 	return p;
 }
 
-
-static void *ice_xmalloc_fatal(size_t size) 
-{
-	if ( size == 0 ) 
-		return NULL;
-
-	ICE_DEBUG("\n Memory FAILURE...\n");
-
-	exit(1);
-}
-
 void ice_xfree(void **ptr) 
 {
 	assert(ptr);

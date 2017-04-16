@@ -19,7 +19,6 @@
  fprintf(stderr, x, ## s); \
  fprintf(stderr,"\n\n--- DEBUG-END ---\n"); \
 } while (0);
- 
 
 // based in OpenBSD reallocarray() function http://man.openbsd.org/reallocarray.3
 void *ice_xmallocarray (size_t nmemb, size_t size); 

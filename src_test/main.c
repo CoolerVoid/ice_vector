@@ -18,7 +18,7 @@ int main(void)
 
     while (i < ice_vector_max(&v))
     {
-        printf("%s \n", (char *) ice_vector_give(&v, i));
+        printf("%s \n", (char *) ice_vector_view(&v, i));
 	i++;
     }
 
@@ -31,8 +31,8 @@ int main(void)
     ice_vector_add(&v, "Mario");
 
     
-    printf("%s \n", (char *) ice_vector_give(&v, 0));
-    printf("%s \n", (char *) ice_vector_give(&v, 1));
+    printf("%s \n", (char *) ice_vector_view(&v, 0));
+    printf("%s \n", (char *) ice_vector_view(&v, 1));
     
     ice_vector_free(&v);
 
