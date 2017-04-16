@@ -1,5 +1,5 @@
 # ice_vector
-This is a C language small dynamic vector library.
+This is a dynamic vector library for C language.
 
 Look example in test_src/main.c
 
