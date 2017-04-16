@@ -1,0 +1,7 @@
+Pacman 
+ghost 
+ball 
+triangle 
+square 
+Sonic 
+Mario 
