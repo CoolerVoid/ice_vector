@@ -17,8 +17,7 @@ int ice_vector_max(ice_vector *v)
 
 void ice_vector_resize(ice_vector *v, int limit)
 {
-
- void **elements = ice_xreallocarray(v->elements, limit, sizeof(void *) ); //using OpenBSD function reallocarray() at mem_ops.c
+ 	void **elements = ice_xreallocarray(v->elements, limit, sizeof(void *) ); //using OpenBSD function reallocarray() at mem_ops.c
 
     	if (elements) 
 	{
@@ -31,6 +30,13 @@ void ice_vector_write(ice_vector *v, int index, void *element)
 {
 	if (index >= 0 && index < v->max)
 		v->elements[index] = element;
+}
+
+void ice_vector_swap(ice_vector *v, int index, int index2)
+{
+	void *tmp= v->elements[index];
+	v->elements[index]  =  v->elements[index2];
+	v->elements[index2] =  tmp;
 }
 
 void ice_vector_add(ice_vector *v, void *element)

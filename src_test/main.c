@@ -10,6 +10,7 @@ int main(void)
     ice_vector v;
     ice_vector_init(&v);
 
+// insert elements in vector
     ice_vector_add(&v, "Pacman");
     ice_vector_add(&v, "ghost");
     ice_vector_add(&v, "ball");
@@ -22,6 +23,21 @@ int main(void)
 	i++;
     }
 
+    puts("test swap element");
+
+// change vector positions, this is cool to use in sort algorithms
+    ice_vector_swap(&v, 0,1);
+    ice_vector_swap(&v, 2,3);
+
+    i=0;
+
+    while (i < ice_vector_max(&v))
+    {
+        printf("%s \n", (char *) ice_vector_view(&v, i));
+	i++;
+    }
+
+// remove vector element
     ice_vector_remove(&v, 4);
     ice_vector_remove(&v, 3);
     ice_vector_remove(&v, 2);
