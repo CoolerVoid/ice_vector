@@ -3,6 +3,7 @@
 #include "ice_vector.h"
 #include "mem_ops.h"
 
+
 void ice_vector_init(ice_vector *v)
 {
 	v->limit = ice_vector_LIMIT;
@@ -84,5 +85,59 @@ void ice_vector_remove(ice_vector *v, int index)
     	if (v->max > 0 && v->max == v->limit / 4)
         	ice_vector_resize(v, v->limit / 2);
 }
+
+void ice_vector_pop(ice_vector *v)
+{
+	ice_vector_remove(v,v->max);
+}
+
+
+int ice_cmp_str(const void *a, const void *b)
+{
+	const char **ia = (const char **)a;
+	const char **ib = (const char **)b;
+
+// TODO improve this function
+	size_t sizemax=strnlen((char *)ia,ICE_MAX_LEN_STR_CMP);	
+
+	return strncmp(*ia, *ib, sizemax);
+}
+
+int ice_cmp_int(const void *a, const void *b) 
+{ 
+	const int *ia = (const int *)a; 
+	const int *ib = (const int *)b;
+	return *ia  - *ib;  
+}
+
+int ice_cmp_double(const void *a, const void *b)
+{
+	double ia = *(double*)a; 
+	double ib = *(double*)b;
+
+	if (ia < ib) 
+		return -1;
+
+	if (ia > ib) 
+		return  1;
+
+	return 0;
+} 
+
+int ice_cmp_float(const void *a, const void *b)
+{
+	double ia = *(float*)a; 
+	double ib = *(float*)b;
+
+	if (ia < ib) 
+		return -1;
+
+	if (ia > ib) 
+		return  1;
+
+	return 0;
+} 
+
+
 
 

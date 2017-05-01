@@ -11,11 +11,14 @@ int main(void)
     ice_vector_init(&v);
 
 // insert elements in vector
-    ice_vector_add(&v, "Pacman");
+    ice_vector_add(&v, "pacman");
     ice_vector_add(&v, "ghost");
     ice_vector_add(&v, "ball");
     ice_vector_add(&v, "triangle");
     ice_vector_add(&v, "square");
+    ice_vector_add(&v, "avenger");
+    ice_vector_add(&v, "dragon");
+    ice_vector_add(&v, "dog");
 
     while (i < ice_vector_max(&v))
     {
@@ -23,11 +26,13 @@ int main(void)
 	i++;
     }
 
-    puts("test swap element");
+    puts("\nTest swap element, Edit and remove");
 
 // change vector positions, this is cool to use in sort algorithms
     ice_vector_swap(&v, 0,1);
     ice_vector_swap(&v, 2,3);
+    ice_vector_remove(&v, 7);
+    ice_vector_write(&v, 3, "ball3");
 
     i=0;
 
@@ -37,18 +42,18 @@ int main(void)
 	i++;
     }
 
-// remove vector element
-    ice_vector_remove(&v, 4);
-    ice_vector_remove(&v, 3);
-    ice_vector_remove(&v, 2);
-    ice_vector_remove(&v, 1);
+    i=0;
 
-    ice_vector_write(&v, 0, "Sonic");
-    ice_vector_add(&v, "Mario");
+// example to use with quick sort
+    puts("\nTest QuickSort with string");
 
-    
-    printf("%s \n", (char *) ice_vector_view(&v, 0));
-    printf("%s \n", (char *) ice_vector_view(&v, 1));
+    qsort(v.elements, ice_vector_max(&v), sizeof(void *), ice_cmp_str);
+
+    while (i < ice_vector_max(&v))
+    {
+        printf("%s \n", (char *) v.elements[i]);
+	i++;
+    }
     
     ice_vector_free(&v);
 
