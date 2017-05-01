@@ -94,14 +94,12 @@ void ice_vector_pop(ice_vector *v)
 
 int ice_cmp_str(const void *a, const void *b)
 {
-	const char **ia = (const char **)a;
-	const char **ib = (const char **)b;
-
 // TODO improve this function
-	size_t sizemax=strnlen((char *)ia,ICE_MAX_LEN_STR_CMP);	
-
-	return strncmp(*ia, *ib, sizemax);
+	size_t sizemax=strnlen(*(char **)a,ICE_MAX_LEN_STR_CMP);	
+	return strncmp(*(char **)a, *(char **)b, sizemax);
 }
+
+
 
 int ice_cmp_int(const void *a, const void *b) 
 { 

@@ -20,6 +20,8 @@ int main(void)
     ice_vector_add(&v, "dragon");
     ice_vector_add(&v, "dog");
 
+    puts("First example show all elements");
+
     while (i < ice_vector_max(&v))
     {
         printf("%s \n", (char *) ice_vector_view(&v, i));
@@ -47,14 +49,26 @@ int main(void)
 // example to use with quick sort
     puts("\nTest QuickSort with string");
 
-    qsort(v.elements, ice_vector_max(&v), sizeof(void *), ice_cmp_str);
+    qsort(v.elements, v.max, sizeof(void *), ice_cmp_str);
 
-    while (i < ice_vector_max(&v))
+    while (i < v.max)
     {
         printf("%s \n", (char *) v.elements[i]);
 	i++;
     }
-    
+   
+
+   puts("\nTest bsearch function");
+
+   char *find = "avenger";
+   char *search = *(char **)bsearch (&find, v.elements, v.max, sizeof (void *), ice_cmp_str);
+
+   if(search != NULL) 
+      printf("Found item in position %s\n", search);
+   else 
+      printf("Element = %s could not be found\n", find);
+ 
+// free heap
     ice_vector_free(&v);
 
     return 0;
