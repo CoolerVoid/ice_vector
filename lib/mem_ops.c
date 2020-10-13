@@ -6,14 +6,16 @@ void *ice_xmallocarray (size_t nmemb, size_t size)
 	if ((nmemb >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW) && nmemb > 0 && SIZE_MAX / nmemb < size) 
 	{
 		ICE_DEBUG("integer overflow block");
-		return NULL;
+		exit(0);
 	}
 
 	void *ptr = malloc (nmemb*size);
 
-	if (ptr == NULL) 
-		return NULL;
-
+	if (ptr == NULL)
+	{	
+		ICE_DEBUG("Error in size %lu\n",size);
+		exit(0);
+	}
 	return ptr;
 }
 
@@ -23,13 +25,16 @@ void *ice_xreallocarray (void *ptr, size_t nmemb, size_t size)
 	if ((nmemb >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW) && nmemb > 0 && SIZE_MAX / nmemb < size) 
 	{
 		ICE_DEBUG("integer overflow block");
-		return NULL;
+		exit(0);
 	}
 
 	void *p = realloc (ptr, nmemb*size);
 
-	if (p == NULL) 
-		return NULL;
+	if (p == NULL)
+	{
+		ICE_DEBUG("Error in size %lu\n",size);
+		exit(0);
+	}
 
 	return p;
 }
